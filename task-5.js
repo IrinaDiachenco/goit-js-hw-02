@@ -1,20 +1,16 @@
-function formatString(string, maxLength = 40) {
+function checkForSpam(str) {
+  "use strict";
   // Write code under this line
-  const stringLength = string.split("");
-  if (stringLength.length > maxLength) {
-    stringLength.length = maxLength;
-    return stringLength.join("") + "...";
-  } else if (
-    (stringLength.length = maxLength || stringLength.length < maxLength)
-  ) {
-    return stringLength.join("");
-  }
+  return str.toLowerCase().includes("spam") ||
+    str.toLowerCase().includes("sale")
+    ? true
+    : false;
 }
 
-console.log(formatString("Curabitur ligula sapien, tincidunt non."));
-console.log(formatString("Vestibulum facilisis, purus nec pulvinar iaculis."));
-// 'Vestibulum facilisis, purus nec pulvinar...'
+console.log(checkForSpam("Latest technology news")); // false
 
-console.log(
-  formatString("Vestibulum facilisis, purus nec pulvinar iaculis.", 30)
-);
+console.log(checkForSpam("JavaScript weekly newsletter")); // false
+
+console.log(checkForSpam("Get best sale offers now!")); // true
+
+console.log(checkForSpam("[SPAM] How to earn fast money?"));
